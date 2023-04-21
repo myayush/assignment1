@@ -1,0 +1,5 @@
+package com.psl.gems.client.play;
+
+public class Player {
+
+}

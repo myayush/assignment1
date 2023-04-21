@@ -1,0 +1,29 @@
+package com.psl.gems.play;
+
+public class Card {
+
+	private final Rank rank;
+    private final Suit suit;
+    
+    public Card(Rank rank, Suit suit) {
+        this.rank = rank;
+        this.suit = suit;
+    }
+    
+    @Override
+    public String toString() {
+        return suit+ "-" + rank;
+    }
+    
+    public int getValue() {
+        return rank.getWeight()*4+ suit.ordinal();
+    }
+    
+    public Rank getRank() {
+        return rank;
+    }
+    
+    public Suit getSuit() {
+        return suit;
+    }
+}

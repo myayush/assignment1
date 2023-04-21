@@ -1,0 +1,51 @@
+package com.psl.gems.play;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Pack {
+    private final List<Card> cards;
+
+    public Pack() {
+        cards = new ArrayList<>();
+        for (Rank rank : Rank.values()) {
+            for (Suit suit : Suit.values()) {
+                cards.add(new Card(rank, suit));
+            }
+        }
+    }
+
+    public void shuffle() {
+        Collections.shuffle(cards);
+    }
+
+    public Card draw() {
+        if (cards.isEmpty()) {
+            throw new RuntimeException("No cards left in pack");
+        }
+        return cards.remove(0);
+    }
+
+    public void add(Card card) {
+        if (!cards.contains(card)) {
+            cards.add(card);
+        }
+    }
+
+    public int size() {
+        return cards.size();
+    }
+
+    public void reset(boolean ascendingOrder) {
+        cards.clear();
+        for (Rank rank : Rank.values()) {
+            for (Suit suit : Suit.values()) {
+                cards.add(new Card(rank, suit));
+            }
+        }
+        if (!ascendingOrder) {
+            Collections.reverse(cards);
+        }
+    }
+}
